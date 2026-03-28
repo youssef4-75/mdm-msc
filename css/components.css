@@ -349,3 +349,60 @@
 
 
 
+/* ===== Locked Challenge Cards ===== */
+.challenge-card.locked {
+    pointer-events: none;
+    opacity: 0.6;
+    position: relative;
+    cursor: not-allowed;
+}
+
+.challenge-card.locked::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+    border-radius: inherit;
+}
+
+.challenge-card.locked .lock-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    z-index: 2;
+}
+
+.challenge-card.locked:hover {
+    transform: none !important;
+    box-shadow: var(--shadow) !important;
+}
+
+.challenge-card.locked .challenge-card-body h3,
+.challenge-card.locked .challenge-card-body p,
+.challenge-card.locked .challenge-card-footer,
+.challenge-card.locked .tag {
+    color: var(--text-gray) !important;
+}
+
+/* Optional: Tooltip on hover */
+.challenge-card.locked:hover::before {
+    content: 'Complete previous challenges to unlock!';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--text-black);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 3;
+    pointer-events: none;
+    animation: fadeIn 0.2s ease;
+}
