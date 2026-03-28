@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Fourier Transform - Math et Magic</title>
+    
+    <!-- GLOBAL CSS -->
+    <link rel="stylesheet" href="../../css/main.css"/>
+    <link rel="stylesheet" href="../../css/components.css"/>
+    
+    <!-- CHALLENGE CSS -->
+    <link rel="stylesheet" href="../../css/challenges/fourier-transform.css"/>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">Math et Magic</a>
+            <button class="nav-toggle" aria-label="Toggle menu"><span class="hamburger"></span></button>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../challenges.html" class="nav-link active">Challenges</a></li>
+                <li><a href="../../about.html" class="nav-link">About</a></li>
+                <li><a href="../../resources.html" class="nav-link">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container challenge-main">
+        
+        <!-- Header -->
+        <header class="challenge-header">
+            <span class="challenge-category">Interactive Simulation</span>
+            <h1> Fourier Transform</h1>
+            <p>Draw complex shapes using only rotating circles. Add circles manually or load a JSON preset.</p>
+        </header>
+
+   
+
+        <!-- Task -->
+        <section class="challenge-section">
+            <h2>📋 The Task</h2>
+            <p>Add rotating circles by entering their <strong>radius</strong> and <strong>speed</strong>, or paste a JSON array of circles. Click <strong>"Run"</strong> to watch them draw complex shapes together. This is how Fourier Transform decomposes any signal into simple rotating components!</p>
+        </section>
+
+        <!-- Input Section -->
+        <section class="challenge-section">
+            <h2>⚙️ Add Circles</h2>
+            
+            <!-- Manual Input -->
+            <div class="input-group" style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <div style="flex: 1; min-width: 150px;">
+                    <label for="circle-radius" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Radius:</label>
+                    <input type="number" id="circle-radius" class="form-input" value="50" min="1" max="200" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 6px; font-size: 1rem;"/>
+                </div>
+                <div style="flex: 1; min-width: 150px;">
+                    <label for="circle-speed" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Speed:</label>
+                    <input type="number" id="circle-speed" class="form-input" value="1" min="-10" max="10" step="0.1" style="width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 6px; font-size: 1rem;"/>
+                </div>
+                <button class="btn btn-secondary" type="button" onclick="addCircleManual()" style="padding: 0.75rem 1.5rem;">
+                    ➕ Add Circle
+                </button>
+                <button class="btn btn-outline" type="button" onclick="clearCircles()" style="padding: 0.75rem 1.5rem;">
+                    🗑️ Clear All
+                </button>
+            </div>
+
+            <!-- JSON Input -->
+            <div style="margin-bottom: 1.5rem;">
+                <label for="json-input" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark);">Or Paste JSON (array of {radius, speed} objects):</label>
+                <textarea id="json-input" class="form-textarea" rows="4" placeholder='[{"radius": 50, "speed": 1}, {"radius": 25, "speed": -1}, {"radius": 15, "speed": -3}]' style="width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: 'Courier New', monospace; resize: vertical;"></textarea>
+                <button class="btn btn-primary mt-4" type="button" onclick="loadJSON()" style="width: auto; margin-top: 1rem;">
+                    📥 Load JSON
+                </button>
+            </div>
+
+            <!-- Circle List -->
+            <div class="circle-list-container" style="background: var(--bg-light); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <h3 style="margin-bottom: 0.75rem; color: var(--text-dark);">Current Circles: <span id="circle-count" style="color: var(--primary);">0</span></h3>
+                <div id="circle-list" class="circle-list" style="max-height: 200px; overflow-y: auto; display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+            </div>
+
+            <!-- Run Button -->
+            <div class="game-controls" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="run-btn" type="button" onclick="runAnimation()" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                    ▶ Run Animation
+                </button>
+                <button class="btn btn-outline" id="stop-btn" type="button" onclick="stopAnimation()" style="display: none; padding: 1rem 2.5rem; font-size: 1.1rem;">
+                    ⏹ Stop
+                </button>
+                <button class="btn btn-outline" id="reset-btn" type="button" onclick="resetCanvas()" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                    🔄 Reset Canvas
+                </button>
+            </div>
+        </section>
+
+        <!-- Canvas Area -->
+        <section class="challenge-section">
+            <h2>🎨 Drawing Canvas</h2>
+            <div class="canvas-container" style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; background: white; border: 2px solid var(--border); border-radius: 8px; overflow: hidden;">
+                <canvas id="fourier-canvas" width="600" height="600" style="display: block; width: 100%; height: auto;"></canvas>
+            </div>
+            <div class="canvas-info" style="text-align: center; margin-top: 1rem; color: var(--text-gray); font-size: 0.95rem;">
+                <span>Time: <strong id="time-display">0.00</strong>s</span> | 
+                <span>Circles: <strong id="active-circles">0</strong></span>
+            </div>
+        </section>
+
+        <!-- Feedback -->
+        <div class="feedback" id="feedback-fourier" style="margin: 1rem 0; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 600; display: none;"></div>
+
+        <!-- Fields of Application -->
+        <section class="challenge-section">
+            <h2>🏢 Fields of Application</h2>
+            <div class="fields-container">
+                <div class="field-item" id="field-audio">
+                    <div class="field-header" onclick="toggleField('field-audio')" style="cursor: pointer; padding: 1rem; background: var(--bg-light); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: 600;">
+                        <span class="field-title">🎵 Audio Compression (MP3)</span>
+                        <span class="field-toggle">+</span>
+                    </div>
+                    <div class="field-explanation" style="display: none; padding: 1rem; color: var(--text-gray);">
+                        MP3 files use Fourier Transform to break sound into frequency components. Less important frequencies are removed, reducing file size by 90% while maintaining quality.
+                    </div>
+                </div>
+                <div class="field-item" id="field-image">
+                    <div class="field-header" onclick="toggleField('field-image')" style="cursor: pointer; padding: 1rem; background: var(--bg-light); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: 600;">
+                        <span class="field-title">🖼️ Image Compression (JPEG)</span>
+                        <span class="field-toggle">+</span>
+                    </div>
+                    <div class="field-explanation" style="display: none; padding: 1rem; color: var(--text-gray);">
+                        JPEG images are decomposed into frequency patterns using Fourier-like transforms. High-frequency details are compressed more aggressively, reducing file size significantly.
+                    </div>
+                </div>
+                <div class="field-item" id="field-mri">
+                    <div class="field-header" onclick="toggleField('field-mri')" style="cursor: pointer; padding: 1rem; background: var(--bg-light); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: 600;">
+                        <span class="field-title">🏥 MRI Scans</span>
+                        <span class="field-toggle">+</span>
+                    </div>
+                    <div class="field-explanation" style="display: none; padding: 1rem; color: var(--text-gray);">
+                        MRI machines capture data in frequency space (k-space). Fourier Transform reconstructs this data into the anatomical images doctors use for diagnosis.
+                    </div>
+                </div>
+            </div>
+            <div class="fields-actions" style="text-align: right; margin-top: 1rem;">
+                <button class="btn btn-outline btn-small" type="button" onclick="closeAllFields('.fields-container')" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Close All</button>
+            </div>
+        </section>
+
+        <!-- Reference -->
+        <section class="challenge-section">
+            <h2>📚 Learn More</h2>
+            <p><a href="https://en.wikipedia.org/wiki/Fourier_series" target="_blank" style="color: var(--primary); font-weight: 500;">Wikipedia: Fourier Series →</a></p>
+            <p><a href="https://www.youtube.com/watch?v=spUNpyF58BY" target="_blank" style="color: var(--primary); font-weight: 500;">Visual Explanation (3Blue1Brown) →</a></p>
+        </section>
+
+        <!-- Navigation -->
+        <div class="challenge-navigation">
+            <a href="../../challenges.html" class="btn-back">← Back to Catalogue</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container"><p>&copy; 2024 Math et Magic. All rights reserved.</p></div>
+    </footer>
+
+    <!-- GLOBAL JS -->
+    <script src="../../js/app.js"></script>
+    <script src="../../js/fields.js"></script>
+    <!-- CHALLENGE JS -->
+    <script src="../../js/challenges/fourier-transform.js"></script>
+</body>
+</html>
