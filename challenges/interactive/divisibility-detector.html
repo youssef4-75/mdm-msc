@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Divisibility Detector - Math et Magic</title>
+    
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../../css/main.css"/>
+    <link rel="stylesheet" href="../../css/components.css"/>
+    <link rel="stylesheet" href="../../css/challenges/divisibility-detector.css"/>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">Math et Magic</a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../challenges.html" class="nav-link active">Challenges</a></li>
+                <li><a href="../../about.html" class="nav-link">About</a></li>
+                <li><a href="../../resources.html" class="nav-link">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container challenge-main">
+        
+        <!-- Header -->
+        <header class="challenge-header">
+            <span class="challenge-badge">Interactive Simulation</span>
+            <h1>Divisibility Detector</h1>
+            <p>Master divisibility rules through practice! Click "Divisible" or "Not Divisible" for each number.</p>
+        </header>
+
+        <!-- Task -->
+        <section class="challenge-section">
+            <h2>📋 The Task</h2>
+            <p>For each stage, decide if the numbers shown are divisible by the target number. Get 5 correct to advance. Stuck? Reveal the rule!</p>
+        </section>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-step active" data-step="1">1</div>
+            <div class="progress-step" data-step="2">2</div>
+            <div class="progress-step" data-step="3">3</div>
+            <div class="progress-step" data-step="4">4</div>
+            <div class="progress-step" data-step="5">5</div>
+        </div>
+
+        <!-- STAGE 1: Divisibility by 2 -->
+        <section class="stage active" id="stage-1" data-divisor="2">
+            <div class="stage-header">
+                <h3 class="stage-title">Stage 1: Divisible by 2?</h3>
+                <span class="stage-counter">Step 1 of 5</span>
+            </div>
+            
+            <p class="stage-intro">Click <strong>✓ Divisible</strong> or <strong>✗ Not Divisible</strong> for each number.</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-numbers" id="quiz-numbers-1"></div>
+                <div class="quiz-progress">
+                    Correct: <span id="correct-1">0</span> / <span id="target-1">5</span>
+                </div>
+            </div>
+            
+            <div class="hint-container">
+                <button class="btn-hint" type="button" onclick="toggleHint('hint-1')">💡 Reveal the Rule</button>
+                <div class="hint-text rule-reveal" id="hint-1">
+                    <h4>📐 Rule: Divisible by 2</h4>
+                    <p><strong>Last digit is even: 0, 2, 4, 6, or 8.</strong></p>
+                    <p class="rule-example">24 ✓ | 37 ✗ | 100 ✓</p>
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-1"></div>
+            
+            <div class="stage-navigation">
+                <button class="btn-reset" type="button" onclick="resetStage(1)">Reset</button>
+                <button class="btn-next-stage" id="next-1" disabled type="button" onclick="nextStage(2)">Next →</button>
+            </div>
+        </section>
+
+        <!-- STAGE 2: Divisibility by 5 -->
+        <section class="stage" id="stage-2" data-divisor="5">
+            <div class="stage-header">
+                <h3 class="stage-title">Stage 2: Divisible by 5?</h3>
+                <span class="stage-counter">Step 2 of 5</span>
+            </div>
+            
+            <p class="stage-intro">Click <strong>✓ Divisible</strong> or <strong>✗ Not Divisible</strong> for each number.</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-numbers" id="quiz-numbers-2"></div>
+                <div class="quiz-progress">
+                    Correct: <span id="correct-2">0</span> / <span id="target-2">5</span>
+                </div>
+            </div>
+            
+            <div class="hint-container">
+                <button class="btn-hint" type="button" onclick="toggleHint('hint-2')">💡 Reveal the Rule</button>
+                <div class="hint-text rule-reveal" id="hint-2">
+                    <h4>📐 Rule: Divisible by 5</h4>
+                    <p><strong>Last digit is 0 or 5.</strong></p>
+                    <p class="rule-example">35 ✓ | 47 ✗ | 120 ✓</p>
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-2"></div>
+            
+            <div class="stage-navigation">
+                <button class="btn-reset" type="button" onclick="resetStage(2)">Reset</button>
+                <button class="btn-next-stage" id="next-2" disabled type="button" onclick="nextStage(3)">Next →</button>
+            </div>
+        </section>
+
+        <!-- STAGE 3: Divisibility by 4 -->
+        <section class="stage" id="stage-3" data-divisor="4">
+            <div class="stage-header">
+                <h3 class="stage-title">Stage 3: Divisible by 4?</h3>
+                <span class="stage-counter">Step 3 of 5</span>
+            </div>
+            
+            <p class="stage-intro">Click <strong>✓ Divisible</strong> or <strong>✗ Not Divisible</strong> for each number.</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-numbers" id="quiz-numbers-3"></div>
+                <div class="quiz-progress">
+                    Correct: <span id="correct-3">0</span> / <span id="target-3">5</span>
+                </div>
+            </div>
+            
+            <div class="hint-container">
+                <button class="btn-hint" type="button" onclick="toggleHint('hint-3')">💡 Reveal the Rule</button>
+                <div class="hint-text rule-reveal" id="hint-3">
+                    <h4>📐 Rule: Divisible by 4</h4>
+                    <p><strong>Last two digits form a number divisible by 4.</strong></p>
+                    <p class="rule-example">124 ✓ (24÷4=6) | 3,578 ✗ (78÷4=19.5)</p>
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-3"></div>
+            
+            <div class="stage-navigation">
+                <button class="btn-reset" type="button" onclick="resetStage(3)">Reset</button>
+                <button class="btn-next-stage" id="next-3" disabled type="button" onclick="nextStage(4)">Next →</button>
+            </div>
+        </section>
+
+        <!-- STAGE 4: Divisibility by 3 -->
+        <section class="stage" id="stage-4" data-divisor="3">
+            <div class="stage-header">
+                <h3 class="stage-title">Stage 4: Divisible by 3?</h3>
+                <span class="stage-counter">Step 4 of 5</span>
+            </div>
+            
+            <p class="stage-intro">Click <strong>✓ Divisible</strong> or <strong>✗ Not Divisible</strong> for each number.</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-numbers" id="quiz-numbers-4"></div>
+                <div class="quiz-progress">
+                    Correct: <span id="correct-4">0</span> / <span id="target-4">5</span>
+                </div>
+            </div>
+            
+            <div class="hint-container">
+                <button class="btn-hint" type="button" onclick="toggleHint('hint-4')">💡 Reveal the Rule</button>
+                <div class="hint-text rule-reveal" id="hint-4">
+                    <h4>📐 Rule: Divisible by 3</h4>
+                    <p><strong>Sum of digits is divisible by 3.</strong></p>
+                    <p class="rule-example">123 ✓ (1+2+3=6) | 457 ✗ (4+5+7=16)</p>
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-4"></div>
+            
+            <div class="stage-navigation">
+                <button class="btn-reset" type="button" onclick="resetStage(4)">Reset</button>
+                <button class="btn-next-stage" id="next-4" disabled type="button" onclick="nextStage(5)">Next →</button>
+            </div>
+        </section>
+
+        <!-- STAGE 5: Divisibility by 7 -->
+        <section class="stage" id="stage-5" data-divisor="7">
+            <div class="stage-header">
+                <h3 class="stage-title">Stage 5: Divisible by 7? (Advanced)</h3>
+                <span class="stage-counter">Step 5 of 5</span>
+            </div>
+            
+            <p class="stage-intro">Click <strong>✓ Divisible</strong> or <strong>✗ Not Divisible</strong> for each number.</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-numbers" id="quiz-numbers-5"></div>
+                <div class="quiz-progress">
+                    Correct: <span id="correct-5">0</span> / <span id="target-5">5</span>
+                </div>
+            </div>
+            
+            <div class="hint-container">
+                <button class="btn-hint" type="button" onclick="toggleHint('hint-5')">💡 Reveal the Rule</button>
+                <div class="hint-text rule-reveal" id="hint-5">
+                    <h4>📐 Rule: Divisible by 7</h4>
+                    <p><strong>Double last digit, subtract from rest. Repeat if needed.</strong></p>
+                    <p class="rule-example">161 ✓ (16-2=14) | 100 ✗ (10-0=10)</p>
+                </div>
+            </div>
+            
+            <div class="feedback" id="feedback-5"></div>
+            
+            <div class="stage-navigation">
+                <button class="btn-reset" type="button" onclick="resetStage(5)">Reset</button>
+                <button class="btn-next-stage" id="next-5" disabled type="button" onclick="nextStage(6)">Complete 🎉</button>
+            </div>
+        </section>
+
+        <!-- Completion Screen -->
+        <div class="stage-complete" id="stage-complete">
+            <div class="confetti">🎉✨</div>
+            <h2>Congratulations!</h2>
+            <p>You've mastered divisibility by 2, 3, 4, 5, and 7!</p>
+            <a href="../../challenges.html" class="btn btn-primary mt-4">Back to Catalogue</a>
+        </div>
+
+        <!-- Fields of Application -->
+        <section class="challenge-section">
+            <h2>🏢 Fields of Application</h2>
+            <div class="fields-container">
+                <div class="field-item" id="field-crypto">
+                    <div class="field-header" onclick="toggleField('field-crypto')">
+                        <span class="field-title">🔐 Cryptography</span>
+                        <span class="field-toggle">+</span>
+                    </div>
+                    <div class="field-explanation">Divisibility rules optimize prime detection in encryption.</div>
+                </div>
+                <div class="field-item" id="field-data">
+                    <div class="field-header" onclick="toggleField('field-data')">
+                        <span class="field-title">💾 Data Validation</span>
+                        <span class="field-toggle">+</span>
+                    </div>
+                    <div class="field-explanation">Checksums use divisibility to catch input errors instantly.</div>
+                </div>
+                <div class="field-item" id="field-scheduling">
+                    <div class="field-header" onclick="toggleField('field-scheduling')">
+                        <span class="field-title">📅 Task Scheduling</span>
+                        <span class="field-toggle">+</span>
+                    </div>
+                    <div class="field-explanation">Systems trigger recurring tasks using divisibility logic.</div>
+                </div>
+            </div>
+            <div class="fields-actions">
+                <button class="btn-close-all" type="button" onclick="closeAllFields('.fields-container')">Close All</button>
+            </div>
+        </section>
+
+        <!-- Reference -->
+        <section class="challenge-section">
+            <h2>📚 Learn More</h2>
+            <p><a href="https://youtu.be/f6tHqOmIj1E" target="_blank">Further Reading →</a></p>
+        </section>
+
+        <!-- Navigation -->
+        <div class="challenge-nav">
+            <a href="../../challenges.html" class="btn btn-outline">← Back to Catalogue</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Math et Magic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/app.js"></script>
+    <script src="../../js/fields.js"></script>
+    <script src="../../js/challenges/divisibility-detector.js"></script>
+</body>
+</html>

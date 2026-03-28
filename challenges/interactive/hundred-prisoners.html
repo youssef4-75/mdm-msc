@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>100 Prisoners Problem - Math et Magic</title>
+    
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../../css/main.css"/>
+    <link rel="stylesheet" href="../../css/components.css"/>
+    <!-- Existing challenge CSS for shared classes -->
+    <link rel="stylesheet" href="../../css/challenges/divisibility-detector.css"/>
+    <!-- Prisoner-specific CSS -->
+    <link rel="stylesheet" href="../../css/challenges/hundred-prisoners.css"/>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">Math et Magic</a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../challenges.html" class="nav-link active">Challenges</a></li>
+                <li><a href="../../about.html" class="nav-link">About</a></li>
+                <li><a href="../../resources.html" class="nav-link">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container challenge-main">
+        
+        <!-- Header -->
+        <header class="challenge-header">
+            <span class="challenge-badge">Interactive Simulation</span>
+            <h1>🔐 The 100 Prisoners Problem</h1>
+            <p>Find your number using the cycle strategy! Open boxes by following the chain.</p>
+        </header>
+
+        <!-- Task -->
+        <section class="challenge-section">
+            <h2>📋 The Task</h2>
+            <p>You're prisoner #<strong id="player-prisoner">?</strong>. 100 boxes contain numbers 1-100. Find the box with YOUR number by following the cycle. You have 9 attempts!</p>
+        </section>
+
+        <!-- Prisoner Assignment & Controls -->
+        <div class="game-controls">
+            <button class="btn btn-primary" id="assign-btn" type="button" onclick="assignPrisonerNumber()">
+                🎲 Assign My Prisoner Number
+            </button>
+            <button class="btn btn-outline" id="reset-btn" type="button" onclick="resetGame()" style="display:none;">
+                🔄 New Game
+            </button>
+        </div>
+
+        <!-- Prisoner Display -->
+        <div class="prisoner-display hidden" id="prisoner-display">
+            <span class="prisoner-label">🎯 Your prisoner number:</span>
+            <strong class="prisoner-number" id="prisoner-number">—</strong>
+        </div>
+
+        <!-- Status Panel -->
+        <div class="status-panel">
+            <div class="steps-counter" style="opacity: 0;">Boxes opened: <strong id="steps-count">0</strong>/9</div>
+            <div id="result-message" style="opacity: 0;" class="result-message" role="status"></div>
+        </div>
+
+        <!-- Game Grid -->
+        <div class="grid-container" id="grid" role="grid" aria-label="Box grid"></div>
+
+        <!-- Strategy Hint -->
+        <div class="hint-container">
+            <button class="btn-hint" type="button" onclick="toggleHint('hint-strategy')">💡 Reveal the Cycle Strategy</button>
+            <div class="hint-text rule-reveal" id="hint-strategy">
+                <h4>📐 The Cycle Strategy</h4>
+                <p><strong>Step 1:</strong> Open the box with YOUR prisoner number.</p>
+                <p><strong>Step 2:</strong> Read the number inside. Open the box with THAT number.</p>
+                <p><strong>Repeat</strong> until you find your number.</p>
+                <p class="rule-example">You're #42 → Open box 42 → See 17 → Open box 17 → See 42 → Found! (2 steps)</p>
+                <p class="hint-guarantee">✅ All cycles are length ≤ 9, so this ALWAYS works!</p>
+            </div>
+        </div>
+
+        <!-- Feedback -->
+        <div class="feedback" id="feedback-game"></div>
+
+        <!-- Completion Screen -->
+        <div class="stage-complete hidden" id="stage-complete">
+            <div class="confetti">🎉✨</div>
+            <h2>Congratulations!</h2>
+            <p>You found your number in <strong id="final-steps">0</strong> steps! The cycle strategy guarantees success when cycles are ≤ 9.</p>
+            <button class="btn btn-primary mt-4" type="button" onclick="resetGame()">Play Again</button>
+        </div>
+
+        <!-- Fields of Application -->
+        <section class="challenge-section">
+            <h2>🏢 Fields of Application</h2>
+            <div class="fields-container">
+                <div class="field-item" id="field-crypto">
+                    <div class="field-header" onclick="toggleField('field-crypto')">
+                        <span class="field-title">🔐 Cryptography</span>
+                        <span class="field-toggle">+</span>
+                    </div>
+                    <div class="field-explanation">Permutation cycles underpin encryption algorithms. Understanding cycle structure helps design secure systems where breaking the code requires solving computationally hard problems.</div>
+                </div>
+                <div class="field-item" id="field-data">
+                    <div class="field-header" onclick="toggleField('field-data')">
+                        <span class="field-title">🌐 Distributed Systems</span>
+                        <span class="field-toggle">+</span>
+                    </div>
+                    <div class="field-explanation">In network consensus protocols, coupling node decisions through structural rules ensures system-wide agreement without requiring every node to communicate with every other node.</div>
+                </div>
+                <div class="field-item" id="field-scheduling">
+                    <div class="field-header" onclick="toggleField('field-scheduling')">
+                        <span class="field-title">⚖️ Load Balancing</span>
+                        <span class="field-toggle">+</span>
+                    </div>
+                    <div class="field-explanation">Assigning tasks to servers using cycle-based hashing ensures even distribution and predictable performance, similar to how the cycle strategy distributes success probability.</div>
+                </div>
+            </div>
+            <div class="fields-actions">
+                <button class="btn-close-all" type="button" onclick="closeAllFields('.fields-container')">Close All</button>
+            </div>
+        </section>
+
+        <!-- Reference -->
+        <section class="challenge-section">
+            <h2>📚 Learn More</h2>
+            <p><a href="https://en.wikipedia.org/wiki/100_prisoners_problem" target="_blank">Wikipedia: 100 Prisoners Problem →</a></p>
+        </section>
+
+        <!-- Navigation -->
+        <div class="challenge-nav">
+            <a href="../../challenges.html" class="btn btn-outline">← Back to Catalogue</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Math et Magic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/app.js"></script>
+    <script src="../../js/fields.js"></script>
+    <script src="../../js/challenges/hundred-prisoners.js"></script>
+</body>
+</html>

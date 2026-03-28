@@ -1,0 +1,468 @@
+/* ========================================
+   HUNDRED PRISONERS - CHALLENGE STYLES
+   File: hundred-prisoners.css
+   Note: Uses CSS variables from main.css
+   ======================================== */
+
+/* ----- Layout & Container ----- */
+.challenge-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.challenge-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.challenge-subtitle {
+    color: var(--text-gray, #6B7280);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* ----- Prisoner Number Display ----- */
+.prisoner-display {
+    text-align: center;
+    padding: 1rem;
+    background: var(--bg-light, #F3F4F6);
+    border-radius: 8px;
+    margin: 1rem 0;
+    display: none;
+}
+
+.prisoner-display.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.prisoner-label {
+    font-size: 1rem;
+    color: var(--text-dark, #374151);
+}
+
+.prisoner-number {
+    font-size: 1.5rem;
+    color: var(--primary, #2563EB);
+    margin-left: 0.5rem;
+    font-weight: 700;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ----- Controls ----- */
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: var(--primary, #2563EB);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #1D4ED8;
+}
+
+.btn-secondary {
+    background: var(--secondary, #14B8A6);
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #0D9488;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary, #2563EB);
+    color: var(--primary, #2563EB);
+}
+
+.btn-outline:hover {
+    background: rgba(37, 99, 235, 0.1);
+}
+
+/* ----- Strategy Hint ----- */
+.strategy-hint {
+    background: rgba(20, 184, 166, 0.1);
+    border-left: 4px solid var(--secondary, #14B8A6);
+    padding: 1rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.5rem 0;
+}
+
+.strategy-hint[hidden] {
+    display: none;
+}
+
+.strategy-hint h4 {
+    margin: 0 0 0.75rem 0;
+    color: var(--text-dark, #374151);
+}
+
+.strategy-hint p {
+    margin: 0.5rem 0;
+    color: var(--text-gray, #6B7280);
+}
+
+.hint-guarantee {
+    font-weight: 600;
+    color: var(--success, #10B981);
+    margin-top: 1rem !important;
+}
+
+/* ----- Status Panel ----- */
+.status-panel {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.steps-counter {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-message {
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 4px;
+    min-height: 1.5rem;
+}
+
+.result-message.success {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--success, #10B981);
+}
+
+.result-message.error {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--error, #EF4444);
+}
+
+/* ----- Grid & Boxes ----- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.box {
+    aspect-ratio: 1;
+    background: var(--bg-light, #F3F4F6);
+    border: 2px solid var(--primary, #2563EB);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    position: relative;
+}
+
+.box:hover {
+    transform: scale(1.05);
+    border-color: var(--accent, #F97316);
+    z-index: 2;
+}
+
+.box:focus {
+    outline: 3px solid var(--accent, #F97316);
+    outline-offset: 2px;
+}
+
+.box.open {
+    background: var(--success, #10B981);
+    color: white;
+    border-color: var(--success, #10B981);
+}
+
+.box.found {
+    animation: celebrate 0.5s ease;
+    background: var(--accent, #F97316);
+    color: white;
+}
+
+@keyframes celebrate {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.box:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* ----- Instructions & Sections ----- */
+.instructions-box {
+    background: white;
+    border-left: 4px solid var(--primary, #2563EB);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.instructions-box ol {
+    margin: 0.75rem 0 0 1.5rem;
+    padding-left: 0.5rem;
+}
+
+.instructions-box li {
+    margin: 0.5rem 0;
+    color: var(--text-gray, #6B7280);
+}
+
+
+
+
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.btn-close-all {
+    background: transparent;
+    border: 1px solid var(--primary, #2563EB);
+    color: var(--primary, #2563EB);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-close-all:hover {
+    background: rgba(37, 99, 235, 0.1);
+}
+
+/* ----- Responsive Design ----- */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+    }
+    
+    .box {
+        font-size: 0.75rem;
+        border-radius: 6px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .prisoner-number {
+        font-size: 1.25rem;
+        display: block;
+        margin-top: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .challenge-container {
+        padding: 1rem;
+    }
+}
+
+/* ----- Utility Classes ----- */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+[aria-current="page"] {
+    font-weight: 600;
+    color: var(--primary, #2563EB);
+}
+
+/* ===== Game Controls ===== */
+.game-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+/* ===== Prisoner Display ===== */
+.prisoner-display {
+    text-align: center;
+    padding: 1rem;
+    background: var(--bg-light);
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.prisoner-display.hidden {
+    display: none;
+}
+
+.prisoner-label {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.prisoner-number {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-left: 0.5rem;
+    font-weight: 700;
+}
+
+
+.steps-counter {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-message {
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 4px;
+    min-height: 1.5rem;
+}
+
+.result-message.success {
+    background: var(--success-light);
+    color: #065F46;
+}
+
+.result-message.error {
+    background: var(--error-light);
+    color: #991B1B;
+}
+
+/* ===== Grid Container ===== */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.box {
+    aspect-ratio: 1;
+    background: var(--bg-light);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.box:hover {
+    transform: scale(1.05);
+    border-color: var(--accent);
+}
+
+.box:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+
+
+.box.target {
+    box-shadow: 0 0 0 3px rgba(247, 239, 233, 0.4);
+}
+
+.box.found {
+    animation: celebrate 0.5s ease;
+    background: var(--accent);
+    color: white;
+}
+
+@keyframes celebrate {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* ===== Stage Complete ===== */
+.stage-complete.hidden {
+    display: none;
+}
+
+/* ===== Hint Guarantee ===== */
+.hint-guarantee {
+    font-weight: 600;
+    color: var(--success);
+    margin-top: 1rem !important;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+    }
+    
+    .game-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .game-controls .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

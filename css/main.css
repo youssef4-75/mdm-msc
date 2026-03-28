@@ -1,0 +1,254 @@
+/* ===== CSS Variables ===== */
+:root {
+    --primary: #2563EB;
+    --primary-dark: #1D4ED8;
+    --secondary: #14B8A6;
+    --accent: #F97316;
+    --bg-light: #F3F4F6;
+    --bg-white: #FFFFFF;
+    --text-dark: #1F2937;
+    --text-black: #111827;
+    --text-gray: #6B7280;
+    --success: #10B981;
+    --border: #E5E7EB;
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+    --radius: 12px;
+    --radius-lg: 16px;
+    --transition: all 0.3s ease;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--bg-white);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-weight: 700;
+    color: var(--text-black);
+    line-height: 1.2;
+}
+
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ===== Layout ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section { padding: 5rem 0; }
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.section-subtitle {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(249,115,22,0.4);
+}
+
+.btn-secondary {
+    background: var(--primary);
+    color: white;
+}
+.btn-secondary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* ===== Hero ===== */
+.hero {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+.hero .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+.hero .quote {
+    font-style: italic;
+    font-size: 1.25rem;
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--accent);
+}
+.hero-description {
+    font-size: 1.25rem;
+    margin: 2rem 0;
+    opacity: 0.95;
+}
+
+/* ===== Challenge Card ===== */
+.challenge-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+.math-problem {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 1.25rem;
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
+    word-break: break-all;
+    border-left: 4px solid var(--primary);
+}
+.challenge-input {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+.challenge-input input {
+    padding: 1rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.125rem;
+    width: 100%;
+    max-width: 300px;
+}
+.challenge-input input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+.success-message {
+    background: #D1FAE5;
+    color: #065F46;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--success);
+}
+.hidden { display: none !important; }
+
+/* ===== Cards Grid ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.card {
+    background: var(--bg-white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+.card-icon {
+    font-size: 3rem;
+    padding: 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+}
+.card-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+.card-body h3 { font-size: 1.5rem; }
+.card-body p { color: var(--text-gray); flex: 1; }
+
+/* ===== Footer ===== */
+.footer {
+    background: var(--text-black);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* ===== Utilities ===== */
+.mt-4 { margin-top: 3rem; }
+.mb-4 { margin-bottom: 3rem; }
+.text-center { text-align: center; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .hero .subtitle { font-size: 1.25rem; }
+    .section-title { font-size: 2rem; }
+    .challenge-input { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 300px; }
+}

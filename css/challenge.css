@@ -1,0 +1,116 @@
+/* Challenge Page Layout */
+.challenge-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.challenge-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 16px;
+    color: white;
+}
+
+.challenge-header h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.challenge-category {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(255,255,255,0.2);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Content Sections */
+.challenge-section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.challenge-section h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d1d5db;
+    transition: background 0.3s;
+}
+
+.progress-dot.active {
+    background: var(--primary);
+}
+
+.progress-dot.completed {
+    background: var(--success);
+}
+
+/* Navigation Buttons */
+.challenge-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e5e7eb;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn-back,
+.btn-nav {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-back {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    border: none;
+}
+
+.btn-nav {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.btn-back:hover { background: #e5e7eb; }
+.btn-nav:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .challenge-container { padding: 1rem; }
+    .challenge-header h1 { font-size: 1.75rem; }
+    .challenge-navigation { flex-direction: column; }
+}

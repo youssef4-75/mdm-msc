@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Math et Magic Challenge">
+    <title>Challenge - Math et Magic</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <link rel="stylesheet" href="../css/challenge.css">
+    <link rel="stylesheet" href="../css/fields-toggle.css">
+</head>
+<body>
+
+    <!-- Navigation (shared) -->
+    <nav class="main-navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Math et Magic</a>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link" data-page="home">Home</a></li>
+                <li><a href="../challenges.html" class="nav-link" data-page="challenges">Challenges</a></li>
+                <li><a href="../about.html" class="nav-link" data-page="about">About</a></li>
+                <li><a href="../resources.html" class="nav-link" data-page="resources">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../challenges.html">Challenges</a></li>
+            <li><span id="breadcrumb-category">Category</span></li>
+            <li><span id="breadcrumb-challenge">Challenge</span></li>
+        </ol>
+    </nav>
+
+    <!-- Challenge Content -->
+    <main class="challenge-container">
+        
+        <!-- Header -->
+        <header class="challenge-header">
+            <span class="challenge-category" id="challenge-category">Category</span>
+            <h1 id="challenge-title">Challenge Title</h1>
+            <p id="challenge-subtitle">Brief description of the challenge</p>
+        </header>
+
+        <!-- The Task -->
+        <section class="challenge-section">
+            <h2>📋 The Task</h2>
+            <div id="task-content">
+                <!-- Challenge-specific task description -->
+            </div>
+        </section>
+
+        <!-- Interactive Area -->
+        <section class="challenge-section">
+            <h2>🎮 Try It Yourself</h2>
+            <div id="interactive-container">
+                <!-- Challenge-specific interactive goes here -->
+            </div>
+            <!-- Optional: Progress indicator for multi-stage challenges -->
+            <div class="progress-indicator" id="progress-indicator" style="display:none;">
+                <!-- Dots injected by JS -->
+            </div>
+        </section>
+
+        <!-- Explanation -->
+        <section class="challenge-section">
+            <h2>💡 How It Works</h2>
+            <div id="explanation-content">
+                <!-- Challenge-specific explanation -->
+            </div>
+        </section>
+
+        <!-- Why It Matters -->
+        <section class="challenge-section">
+            <h2>🌟 Why It Matters</h2>
+            <div id="why-content">
+                <!-- Real-world relevance -->
+            </div>
+        </section>
+
+        <!-- Fields of Application (Interactive Toggle) -->
+        <section class="challenge-section">
+            <h2>🏢 Fields of Application</h2>
+            <div class="fields-container" id="fields-container">
+                <!-- Items injected by JS or hardcoded per challenge -->
+            </div>
+            <div class="fields-actions">
+                <button class="btn-close-all" onclick="closeAllFields('.fields-container')">
+                    Close All
+                </button>
+            </div>
+        </section>
+
+        <!-- Reference Link -->
+        <section class="challenge-section">
+            <h2>📚 Learn More</h2>
+            <p>
+                <a href="#" id="reference-link" target="_blank">
+                    Further Reading on This Topic →
+                </a>
+            </p>
+        </section>
+
+        <!-- Navigation -->
+        <div class="challenge-navigation">
+            <a href="../challenges.html" class="btn-back">← Back to Catalogue</a>
+            <div>
+                <button id="prev-challenge" class="btn-nav" onclick="navigateChallenge(-1)">Previous</button>
+                <button id="next-challenge" class="btn-nav" onclick="navigateChallenge(1)">Next</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Math et Magic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/navigation.js"></script>
+    <script src="../js/fields-toggle.js"></script>
+    <script src="../js/challenges/challenge-specific.js"></script>
+</body>
+</html> 

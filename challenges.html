@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Browse all Math et Magic challenges - interactive simulations, pen & paper puzzles, and real-world applications"/>
+    <title>Challenges Catalogue - Math et Magic</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/components.css"/>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Math et Magic</a>
+            
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="challenges.html" class="nav-link active">Challenges</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Challenge Catalogue</h1>
+            <p class="page-subtitle">Browse all challenges and click on any to begin your mathematical journey</p>
+            
+            <!-- Quick Filters -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="interactive">🎮 Interactive</button>
+                <button class="filter-btn" data-filter="pen-paper">📝 Pen & Paper</button>
+                <button class="filter-btn" data-filter="quick-facts">🌍 Quick Facts</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- 🔷 Category: Interactive Simulations -->
+        <section id="interactive" class="catalogue-category" data-category="interactive">
+            <div class="category-header">
+                <span class="category-icon">🎮</span>
+                <div>
+                    <h2 class="category-title">Interactive Simulations</h2>
+                    <p class="category-description">Hands-on digital experiments with instant visual feedback</p>
+                </div>
+            </div>
+            
+            <div class="challenge-grid">
+                
+                <!-- Challenge: Divisibility Detector -->
+                <a href="challenges/interactive/divisibility-detector.html" class="challenge-card" data-tags="divisibility math rules">
+                    <div class="challenge-card-header">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Divisibility Detector</h3>
+                        <p>Master the rules of divisibility by 2, 3, 4, 5, and more—with interactive stages that build your intuition.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Number Theory</span>
+                            <span class="tag">Mental Math</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 10-15 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Binary Counting -->
+                <a href="challenges/interactive/binary-counting.html" class="challenge-card" data-tags="binary base counting computer">
+                    <div class="challenge-card-header">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Binary Base Representation</h3>
+                        <p>Discover how computers count using only 0s and 1s—with a fun "number thief" mechanic that reveals binary naturally.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Computer Science</span>
+                            <span class="tag">Number Systems</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 8-12 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Difference of Squares -->
+                <a href="challenges/interactive/difference-of-squares.html" class="challenge-card" data-tags="algebra geometry visual">
+                    <div class="challenge-card-header">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Difference of Squares</h3>
+                        <p>Visual algebra that makes multiplication simple: see why a² - b² = (a+b)(a-b) with draggable shapes.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Algebra</span>
+                            <span class="tag">Geometry</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 10 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Fast Exponentiation -->
+                <a href="challenges/interactive/fast-exponentiation.html" class="challenge-card" data-tags="exponentiation algorithm efficiency">
+                    <div class="challenge-card-header">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Fast Exponentiation</h3>
+                        <p>Compute huge powers in seconds, not hours. Learn the algorithm that powers cryptography and computer graphics.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Algorithms</span>
+                            <span class="tag">Efficiency</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 15-20 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Hairy Ball Theorem -->
+                <a href="challenges/interactive/hairy-ball.html" class="challenge-card" data-tags="topology vector fields sphere">
+                    <div class="challenge-card-header">
+                        <span class="difficulty hard">Advanced</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Hairy Ball Theorem</h3>
+                        <p>Why you can't comb a hairy ball flat. Explore topology with interactive vector fields on a sphere.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Topology</span>
+                            <span class="tag">Vector Fields</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 20 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Fourier Transform -->
+                <a href="challenges/interactive/fourier-transform.html" class="challenge-card" data-tags="fourier waves signal processing">
+                    <div class="challenge-card-header">
+                        <span class="difficulty hard">Advanced</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Fourier Transform</h3>
+                        <p>Break any signal into pure frequencies. See how your music, images, and WiFi rely on this mathematical magic.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Signal Processing</span>
+                            <span class="tag">Waves</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 25 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Kernel Trick -->
+                <a href="challenges/interactive/kernel-trick.html" class="challenge-card" data-tags="machine-learning svm kernel">
+                    <div class="challenge-card-header">
+                        <span class="difficulty hard">Advanced</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>The Kernel Trick</h3>
+                        <p>How machine learning separates the inseparable. Visualize high-dimensional spaces without leaving 2D.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Linear Algebra</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 20 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Bloom Filters -->
+                <a href="challenges/interactive/bloom-filters.html" class="challenge-card" data-tags="data-structures probabilistic hashing">
+                    <div class="challenge-card-header">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Bloom Filters</h3>
+                        <p>Check if an item is in a set using almost no memory. The probabilistic data structure behind caches and databases.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Data Structures</span>
+                            <span class="tag">Probabilistic</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 15 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: 100 Prisoners Problem -->
+                <a href="challenges/interactive/hundred-prisoners.html" class="challenge-card" data-tags="probability strategy permutation">
+                    <div class="challenge-card-header">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>The 100 Prisoners Problem</h3>
+                        <p>A counterintuitive probability puzzle with a 31% success strategy. Can you find the pattern?</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Probability</span>
+                            <span class="tag">Strategy</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 18 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: PCA -->
+                <a href="challenges/interactive/pca.html" class="challenge-card" data-tags="pca dimensionality-reduction statistics">
+                    <div class="challenge-card-header">
+                        <span class="difficulty hard">Advanced</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Principal Component Analysis</h3>
+                        <p>Reduce complex data to its essential patterns. See how PCA finds the "main directions" in any dataset.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Statistics</span>
+                            <span class="tag">Data Science</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 22 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: √2 Construction -->
+                <a href="challenges/interactive/sqrt2-construction.html" class="challenge-card" data-tags="geometry irrational construction">
+                    <div class="challenge-card-header">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="challenge-type">Interactive</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>√2 Construction</h3>
+                        <p>Build the irrational number √2 with just a compass and straightedge. Ancient geometry meets modern understanding.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Geometry</span>
+                            <span class="tag">Proof</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 12 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- 📝 Category: Pen & Paper Challenges -->
+        <section id="pen-paper" class="catalogue-category" data-category="pen-paper">
+            <div class="category-header">
+                <span class="category-icon">📝</span>
+                <div>
+                    <h2 class="category-title">Pen & Paper Challenges</h2>
+                    <p class="category-description">Classic puzzles that train logical thinking—no computer required</p>
+                </div>
+            </div>
+            
+            <div class="challenge-grid">
+                
+                <!-- Challenge: Seven Bridges -->
+                <a href="challenges/pen-paper/seven-bridges.html" class="challenge-card" data-tags="graph-theory euler paths">
+                    <div class="challenge-card-header">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="challenge-type">Pen & Paper</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Seven Bridges Tracing Puzzle</h3>
+                        <p>Can you cross every bridge in Königsberg exactly once? The problem that launched graph theory.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Graph Theory</span>
+                            <span class="tag">Logic</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 10 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Cryptarithm -->
+                <a href="challenges/pen-paper/cryptarithm.html" class="challenge-card" data-tags="cryptarithm puzzle algebra">
+                    <div class="challenge-card-header">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="challenge-type">Pen & Paper</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Cryptarithm Decoding Challenge</h3>
+                        <p>Letters stand for digits: SEND + MORE = MONEY. Use logic to crack the code.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Algebra</span>
+                            <span class="tag">Deduction</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 15-20 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Four Color Map -->
+                <a href="challenges/pen-paper/four-color-map.html" class="challenge-card" data-tags="graph-theory coloring map">
+                    <div class="challenge-card-header">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="challenge-type">Pen & Paper</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Four-Color Map Puzzle</h3>
+                        <p>Color any map using only 4 colors so no adjacent regions match. Prove it yourself.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Graph Theory</span>
+                            <span class="tag">Combinatorics</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 15 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: 15 Puzzle -->
+                <a href="challenges/pen-paper/fifteen-puzzle.html" class="challenge-card" data-tags="parity permutation sliding">
+                    <div class="challenge-card-header">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="challenge-type">Pen & Paper</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>15 Puzzle Parity Challenge</h3>
+                        <p>Why some sliding puzzles are impossible to solve. Learn parity arguments with a classic toy.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Permutations</span>
+                            <span class="tag">Parity</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 12 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- 🌍 Category: Quick Facts -->
+        <section id="quick-facts" class="catalogue-category" data-category="quick-facts">
+            <div class="category-header">
+                <span class="category-icon">🌍</span>
+                <div>
+                    <h2 class="category-title">Quick Facts</h2>
+                    <p class="category-description">Short, insightful explorations of math in the real world</p>
+                </div>
+            </div>
+            
+            <div class="challenge-grid">
+                
+                <!-- Challenge: The Zipper -->
+                <a href="challenges/quick-facts/zipper.html" class="challenge-card" data-tags="bijection infinity sets">
+                    <div class="challenge-card-header">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="challenge-type">Quick Fact</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>The Zipper</h3>
+                        <p>How to pair every fraction with a whole number. A simple trick that reveals infinity's surprises.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Set Theory</span>
+                            <span class="tag">Infinity</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 5 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Non-Commutative Operations -->
+                <a href="challenges/quick-facts/non-commutative.html" class="challenge-card" data-tags="operations order cooking">
+                    <div class="challenge-card-header">
+                        <span class="difficulty easy">Beginner</span>
+                        <span class="challenge-type">Quick Fact</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Non-Commutative Operations (Cooking)</h3>
+                        <p>Why putting on socks then shoes ≠ shoes then socks. Math meets everyday logic.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Algebra</span>
+                            <span class="tag">Logic</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 4 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: Sampling & Scaling Laws -->
+                <a href="challenges/quick-facts/sampling-scaling.html" class="challenge-card" data-tags="statistics sampling scaling">
+                    <div class="challenge-card-header">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="challenge-type">Quick Fact</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>Sampling & Scaling Laws</h3>
+                        <p>Why a small survey can predict election results. The math behind "good enough" data.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Statistics</span>
+                            <span class="tag">Real World</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 7 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+                <!-- Challenge: The Internet -->
+                <a href="challenges/quick-facts/internet.html" class="challenge-card" data-tags="networks routing packets">
+                    <div class="challenge-card-header">
+                        <span class="difficulty medium">Intermediate</span>
+                        <span class="challenge-type">Quick Fact</span>
+                    </div>
+                    <div class="challenge-card-body">
+                        <h3>The Internet</h3>
+                        <p>How graph theory routes your messages across the globe in milliseconds. Math powers the web.</p>
+                        <div class="challenge-tags">
+                            <span class="tag">Networks</span>
+                            <span class="tag">Graph Theory</span>
+                        </div>
+                    </div>
+                    <div class="challenge-card-footer">
+                        <span class="time-estimate">⏱ 8 min</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Math et Magic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script>
+        // ===== Challenge Catalogue Filters =====
+        document.addEventListener('DOMContentLoaded', () => {
+            initFilters();
+        });
+
+        function initFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const categories = document.querySelectorAll('.catalogue-category');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filter = btn.dataset.filter;
+
+                    // Show/hide categories
+                    categories.forEach(cat => {
+                        if (filter === 'all' || cat.dataset.category === filter) {
+                            cat.style.display = 'block';
+                            cat.classList.add('fade-in');
+                        } else {
+                            cat.style.display = 'none';
+                            cat.classList.remove('fade-in');
+                        }
+                    });
+
+                    // Smooth scroll to first visible category
+                    const visible = Array.from(categories).find(c => c.style.display !== 'none');
+                    if (visible) {
+                        visible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+
+        // Optional: Add subtle hover effect to challenge cards via JS
+        document.querySelectorAll('.challenge-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+/* Fields of Application - Interactive Toggle */
+.fields-container {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.field-item {
+    background: var(--white);
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.field-item:hover {
+    border-color: var(--primary);
+}
+
+.field-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.field-header:hover {
+    background: var(--bg-light);
+}
+
+.field-title {
+    font-weight: 600;
+    color: var(--text-black);
+    font-size: 1.1rem;
+}
+
+.field-toggle {
+    font-size: 1.25rem;
+    color: var(--primary);
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.field-toggle.open {
+    transform: rotate(45deg);
+}
+
+.field-explanation {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1.5rem;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.field-explanation.show {
+    max-height: 200px;
+    padding: 1rem 1.5rem;
+}
+
+.fields-actions {
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.btn-close-all {
+    background: none;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn-close-all:hover {
+    background: var(--primary);
+    color: white;
+}
