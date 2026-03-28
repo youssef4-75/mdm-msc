@@ -1,0 +1,483 @@
+/* ========================================
+   BINARY COUNTING - COUNTER & MODAL STYLES
+   File: ../../css/challenges/binary-counting.css
+   Note: Uses existing divisibility-detector.css classes
+   ======================================== */
+
+/* Counter Display */
+.counter-display {
+    text-align: center;
+    padding: 2rem;
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow);
+}
+
+.counter-label {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    margin-right: 1rem;
+}
+
+.counter-value {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Counter Controls */
+.counter-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.steps-input {
+    width: 80px;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.steps-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.steps-label {
+    color: var(--text-gray);
+    font-size: 1rem;
+}
+
+/* Sequence Output */
+.sequence-container {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow);
+}
+
+.sequence-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.sequence-header h3 {
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.sequence-output {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+}
+
+.sequence-placeholder {
+    color: var(--text-gray);
+    font-style: italic;
+    margin: 0;
+}
+
+.sequence-item {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid var(--border);
+    animation: sequenceAppear 0.3s ease;
+}
+
+.sequence-item:last-child {
+    border-bottom: none;
+}
+
+@keyframes sequenceAppear {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Digits Pool */
+.digits-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.base-info {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.base-info strong {
+    color: var(--primary);
+}
+
+#base-count {
+    color: var(--text-gray);
+    margin-left: 0.5rem;
+}
+
+.digits-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+}
+
+.digit-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--bg-white);
+    border: 2px solid var(--primary);
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--primary);
+    cursor: default;
+    transition: all 0.2s ease;
+}
+
+.digits-hint {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin: 0.5rem 0 0;
+    font-style: italic;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 1rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+/* Modal Card */
+.modal-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-gray);
+    line-height: 1;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.modal-body {
+    margin-bottom: 1.5rem;
+}
+
+/* Current Digits in Modal */
+.current-digits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+}
+
+.modal-digit-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(168, 85, 247, 0.1);
+    border: 2px solid rgba(168, 85, 247, 0.3);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.modal-digit-chip .remove-digit {
+    background: none;
+    border: none;
+    color: rgba(168, 85, 247, 0.6);
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.modal-digit-chip .remove-digit:hover {
+    background: rgba(168, 85, 247, 0.2);
+    color: var(--text-dark);
+}
+
+/* Add Digit Section */
+.add-digit-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.add-digit-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+}
+
+.add-digit-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.btn-append {
+    background: #9333ea;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-append:hover {
+    background: #7c3aed;
+}
+
+/* Swap Section */
+.swap-section {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.swap-input {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+}
+
+.swap-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.btn-swap-icon {
+    background: #3b82f6;
+    color: white;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-swap-icon:hover {
+    background: #2563eb;
+}
+
+.btn-switch {
+    background: #60a5fa;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-switch:hover {
+    background: #3b82f6;
+}
+
+/* Modal Footer */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.btn-cancel {
+    background: var(--bg-white);
+    color: var(--text-dark);
+    border: 2px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+    background: var(--bg-light);
+}
+
+.btn-save {
+    background: #22c55e;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-save:hover {
+    background: #16a34a;
+}
+
+/* Button Small */
+.btn-small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .counter-value {
+        font-size: 3rem;
+    }
+    
+    .counter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .steps-input {
+        width: 100%;
+        max-width: 100px;
+        margin: 0 auto;
+    }
+    
+    .digits-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .digit-chip {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .modal-card {
+        padding: 1.5rem;
+    }
+    
+    .add-digit-section,
+    .swap-section {
+        flex-direction: column;
+    }
+    
+    .swap-input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .counter-value {
+        font-size: 2.5rem;
+    }
+    
+    .digit-chip {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+    
+    .modal-digit-chip {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
